@@ -2,7 +2,7 @@ import cv2
 import numpy as np 
 import matplotlib.pyplot as plt
 def main():
-    img = cv2.imread('lena.jpg',0)
+    img = cv2.imread('../05012019/test_btc.jpg',0)
     hist_original = cv2.calcHist([img],[0],None,[256],[0,256])
     G = img.astype(np.double)
     kernel = np.ones((4,4),np.float32)/16
@@ -10,11 +10,11 @@ def main():
     K = G - J
     U = 0.5*K + J 
     U = U.astype(np.uint8)
-    hist = cv2.calcHist([U],[0],None,[256],[0,256])
-    plt.plot(hist_original,color='b')
+    hist = cv2.calcHist([U],[0],None,[125],[0,125])
+    #plt.plot(hist_original,color='b')
     plt.plot(hist,color='r')
-    plt.legend(('original','new image'),loc='upper right')
-    plt.xlim([0,256])
+    #plt.legend(('original','new image'),loc='upper right')
+    plt.xlim([0,255])
     plt.show()
     cv2.imshow('sdfaas',U)
     cv2.waitKey(0)

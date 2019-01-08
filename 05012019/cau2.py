@@ -2,20 +2,17 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 def main():
-    img = cv2.imread('lena.jpg')
+    img = cv2.imread('test_btc.jpg')
     height , width = img.shape[:2]
     S = np.zeros(img.shape,dtype='uint8')
-    for h in range(height):
-        for w in range(width):
-            if (w == 0):
-                S[h,w,:] = img[h,w,:]
+    for r in range(height):
+        for c in range(width):
+            if (c <= 1):
+                S[r,c,:] = img[r,c,:]
             else:
-                S[h,w,:] = 2*img[h,w,:] - img[h,w-1,:]
-    hist_col =  cv2.calcHist([S],[2],None,[256],[0,256])
-    plt.plot(hist_col)
-    plt.xlim([0,255])
-    plt.show()
-
+                S[r,c,:] = 2*img[r,c,:] - img[r,c-1,:]
+    cv2.imshow('test',S)
+    cv2.waitKey(0)
 
 if __name__ == "__main__":
     main()
