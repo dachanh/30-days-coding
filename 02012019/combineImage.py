@@ -2,8 +2,8 @@ import cv2
 import numpy as np 
 
 def main():
-    img = cv2.imread('trump.jpg')
-    J = cv2.imread('silicon_valley.jpg')
+    img = cv2.imread('trum.jpg')
+    J = cv2.imread('lena.jpg')
     J = cv2.resize(J,(img.shape[1],img.shape[0]))
     T1 , T2 , T3 = cv2.split(img)
     _,thresh1 = cv2.threshold(T1,120,255,cv2.THRESH_BINARY)
@@ -17,6 +17,8 @@ def main():
     for c in range(3):
         K[:,:,c] = M*J[:,:,c] +  N*img[:,:,c]
     cv2.imshow('K',K)
+    cv2.imshow('M',M)
+    print(M)
     cv2.waitKey(0) 
 
 
