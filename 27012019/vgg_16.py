@@ -7,9 +7,9 @@ Original file is located at
     https://colab.research.google.com/drive/1lQZLAuSfCGrEWQp2o8pE3UcF2nz854ZJ
 """
 
-!pip3 install tensorflow-gpu
+#!pip3 install tensorflow-gpu
 
-!pip install numpy
+#!pip install numpy
 
 import tensorflow as tf
 from tensorflow import keras
@@ -21,7 +21,7 @@ datasets = keras.datasets.cifar100
 
 (X_train,y_train), (X_test,y_test) = datasets.load_data()
 
-X_train.shape
+#X_train.shape
 
 plt.figure(figsize=(10,10))
 for i in range(25):
