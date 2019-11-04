@@ -11,7 +11,6 @@ for indx ,line in enumerate(data):
     b.append(int(temp[3]))
  
 img = cv2.imread('./lion.jpg')
-k = cv2.copyMakeBorder(img,0,0,0,0,cv2.BORDER_REPLICATE) 
 m,n = img.shape[:2]
 ID = []
 for idx,it in enumerate(b):
@@ -20,10 +19,10 @@ for idx,it in enumerate(b):
 for c in range(3):
     for it in ID: v[c][it] = 0
     for j in range(n):
-        count = 1
+        count = 0
         for i in range((j-1)*m + 1 ,j*m):
-            k[count,j,c] = v[c][i]
+            if v[c][i] == 0 :
+                img[count][j][c] = 0 
             count += 1
-k =np.array(k,np.uint8)
-cv2.imshow('k',k)
+cv2.imshow('k',img)
 cv2.waitKey(0)
